@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Finance Tracker</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1>💰 Finance Tracker</h1>
+            <p class="subtitle">Take control of your money decisions</p>
+        </header>
+
+        <!-- Summary Cards -->
+        <div class="summary-section">
+            <div class="summary-card income-card">
+                <div class="card-icon">📈</div>
+                <div class="card-content">
+                    <p class="card-label">Total Income</p>
+                    <p class="card-amount" id="totalIncome">₹0.00</p>
+                </div>
+            </div>
+            <div class="summary-card expense-card">
+                <div class="card-icon">📉</div>
+                <div class="card-content">
+                    <p class="card-label">Total Expenses</p>
+                    <p class="card-amount" id="totalExpenses">₹0.00</p>
+                </div>
+            </div>
+            <div class="summary-card balance-card">
+                <div class="card-icon">💵</div>
+                <div class="card-content">
+                    <p class="card-label">Balance</p>
+                    <p class="card-amount" id="balance">₹0.00</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Left Column: Input Form -->
+            <div class="input-section">
+                <h2>Add Transaction</h2>
+                <form id="transactionForm">
+                    <div class="form-group">
+                        <label for="type">Type</label>
+                        <select id="type" required>
+                            <option value="income">Income</option>
+                            <option value="expense">Expense</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="description">Description</label>
+                        <input type="text" id="description" placeholder="e.g., Salary, Groceries" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="amount">Amount (₹)</label>
+                        <input type="number" id="amount" placeholder="0.00" step="0.01" min="0" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="category">Category</label>
+                        <select id="category" required>
+                            <option value="">Select category...</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="date">Date</label>
+                        <input type="date" id="date" required>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Add Transaction</button>
+                </form>
+
+                <!-- Filter Section -->
+                <div class="filter-section">
+                    <h3>Filter Transactions</h3>
+                    <div class="filter-group">
+                        <label for="filterType">Type</label>
+                        <select id="filterType">
+                            <option value="all">All</option>
+                            <option value="income">Income</option>
+                            <option value="expense">Expense</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="filterCategory">Category</label>
+                        <select id="filterCategory">
+                            <option value="all">All Categories</option>
+                        </select>
+                    </div>
+                    <button id="clearBtn" class="btn btn-secondary">Clear All Data</button>
+                </div>
+            </div>
+
+            <!-- Right Column: Visualization and History -->
+            <div class="display-section">
+                <!-- Chart Section -->
+                <div class="chart-section">
+                    <h2>Expense Breakdown</h2>
+                    <div class="chart-container">
+                        <canvas id="expenseChart"></canvas>
+                        <div id="noDataMessage" class="no-data">Add expenses to see breakdown</div>
+                    </div>
+                    <div id="chartLegend" class="chart-legend"></div>
+                </div>
+
+                <!-- Category Analysis -->
+                <div class="analysis-section">
+                    <h2>Category Analysis</h2>
+                    <div id="categoryAnalysis" class="category-list">
+                        <p class="no-data">No transactions yet</p>
+                    </div>
+                </div>
+
+                <!-- Transaction History -->
+                <div class="history-section">
+                    <h2>Transaction History</h2>
+                    <div id="transactionList" class="transaction-list">
+                        <p class="no-data">No transactions yet</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
